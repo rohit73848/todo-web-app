@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Google Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    /* Ekta sundor blue gradient background */
+    background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main {
+    width: 100%;
+    max-width: 450px; /* Boro screen e beshi chhorabe na */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* --- Input Section --- */
+.input-sec {
+    background-color: #f4f7f8;
+    padding: 30px 25px;
+    border-bottom: 2px solid #e1e8ed;
+}
+
+.input-sec label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2b5876;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-sec input {
+    flex: 1; /* Input field ta baki jayga tuku niye nebe */
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #d1d9e0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-sec input:focus {
+    border-color: #4e4376; /* Click korle border color change hobe */
+}
+
+.input-sec button.add-task-btn {
+    padding: 12px 20px;
+    background-color: #4e4376;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.input-sec button.add-task-btn:hover {
+    background-color: #2b5876;
+}
+
+.input-sec button.add-task-btn:active {
+    transform: scale(0.95); /* Click korle ektu choto hobe (animation) */
+}
+
+.input-sec small {
+    color: #e63946;
+    font-size: 13px;
+    font-weight: 600;
+    display: none;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+/* --- List Section --- */
+.list-sec {
+    padding: 25px;
+    background-color: #ffffff;
+    min-height: 200px;
+}
+
+.task-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+
+/* Tumi jokhon JS diye li banabe, tar ekta basic look jate bhalo lage tar jono eta dewa holo */
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #f8f9fc;
+    border-left: 4px solid #4e4376;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    color: #333;
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 480px) {
+    .input-group {
+        flex-direction: column; /* Mobile e input ar button upore-niche hoye jabe */
+    }
+    
+    .input-sec button.add-task-btn {
+        width: 100%;
+    }
+}
