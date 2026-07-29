@@ -57,10 +57,9 @@ body {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    overflow: hidden; /* Important for the masked border effect */
+    overflow: hidden; 
 }
 
-/* The Revolving Border (Using Conic Gradient & Masking) */
 .main::before {
     content: '';
     position: absolute;
@@ -79,11 +78,10 @@ body {
     z-index: 0;
 }
 
-/* Dark Overlay on the Spinning Border to reveal only the edge */
 .main::after {
     content: '';
     position: absolute;
-    inset: 4px; /* How thick the border is */
+    inset: 4px; 
     background-color: var(--card-bg);
     border-radius: 16px;
     z-index: 0;
@@ -93,7 +91,7 @@ body {
     100% { transform: rotate(1turn); }
 }
 
-/* Content wrapper (To place it above the background effect) */
+
 .main * {
     position: relative;
     z-index: 1;
@@ -101,14 +99,12 @@ body {
 
 /* 3. New Heading Styling */
 .app-title {
-    /* font-family: 'Montserrat', sans-serif; */
     font-size: 32px;
     font-weight: 600;
     text-align: center;
     text-transform: capitalize;
     letter-spacing: 1px;
     margin-bottom: 25px;
-    /* Neon Text Effect using Multiple Text Shadows */
     color: #fff;
     user-select: none;
     text-shadow: 
@@ -191,10 +187,10 @@ body {
     color: var(--error-color);
     font-size: 14px;
     font-weight: 600;
-    display: none; /* Controlled by JS */
+    display: none;
     margin-top: 10px;
     margin-left: 5px;
-    animation: shake 0.3s ease; /* Jiggle animation for error */
+    animation: shake 0.3s ease; 
 }
 
 @keyframes shake {
@@ -203,14 +199,12 @@ body {
     75% { transform: translateX(5px); }
 }
 
-/* 5. List Section --- */
 .list-sec {
     min-height: 150px;
-    max-height: 350px; /* Limit height */
-    overflow-y: auto; /* Scrollable list */
+    max-height: 350px; 
+    overflow-y: auto;
 }
 
-/* Scrollbar styling for list section */
 .list-sec::-webkit-scrollbar {
     width: 6px;
 }
@@ -231,7 +225,6 @@ body {
     list-style: none;
 }
 
-/* 6. Dynamic List Item Style (Define how JS-added li should look) */
 .task-list li {
     display: flex;
     justify-content: space-between;
@@ -245,7 +238,6 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     
-    /* ADD THIS ANIMATION WHEN ADDING VIA JS */
     animation: slideIn 0.4s ease-out forwards;
 }
 
@@ -254,7 +246,6 @@ body {
     transform: translateX(5px);
 }
 
-/* Entry Animation for dynamically added items */
 @keyframes slideIn {
     0% {
         opacity: 0;
@@ -283,4 +274,48 @@ body {
     .input-sec button.add-task-btn {
         width: 100%;
     }
+}
+
+.task-list li span:first-child {
+    flex: 1; 
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.toggle-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--accent-1); 
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.toggle-box:hover {
+    background-color: rgba(0, 242, 254, 0.2);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+.toggle-box.checked {
+    background-color: var(--accent-1);
+    box-shadow: 0 0 12px var(--accent-1);
+}
+
+/* Delete Button Styling */
+.delete-btn {
+    color: var(--error-color); 
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 15px var(--error-color);
+    transform: scale(1.2);
 }
