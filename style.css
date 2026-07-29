@@ -1,321 +1,339 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght@0,400;0,700;1,400&family=Montserrat:wght@800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght@0,400;0,700;1,400&family=Montserrat:wght@800&display=swap");
 
 /* Dynamic Color Palette */
 :root {
-    --bg-dark: #090912;
-    --card-bg: #111122;
-    --text-color: #f0f0f0;
-    --accent-1: #00f2fe; /* Cyan Neon */
-    --accent-2: #ec008c; /* Magenta Neon */
-    --error-color: #ff4d6d;
+  --bg-dark: #090912;
+  --card-bg: #111122;
+  --text-color: #f0f0f0;
+  --accent-1: #00f2fe; /* Cyan Neon */
+  --accent-2: #ec008c; /* Magenta Neon */
+  --error-color: #ff4d6d;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Google Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Google Sans", sans-serif;
 }
 
 body {
-    height: 100vh;
-    width: 100%;
-    background-color: var(--bg-dark);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
 }
 
 /* 1. Static Animated Background Gradient (Using Linear Gradients & Keyframes) */
 .bg-animate {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(125deg, #120136 0%, #090912 50%, #4e0d69 100%);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(125deg, #120136 0%, #090912 50%, #4e0d69 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
 }
 
 @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* 2. Main Card Styling - Modern "Spinning Border" Effect */
 .main {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    overflow: hidden; 
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .main::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    /* Create the spin pattern */
-    background: conic-gradient(
-        transparent,
-        var(--accent-1),
-        var(--accent-2),
-        transparent 30%
-    );
-    animation: rotateBorder 4s linear infinite;
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* Create the spin pattern */
+  background: conic-gradient(
+    transparent,
+    var(--accent-1),
+    var(--accent-2),
+    transparent 30%
+  );
+  animation: rotateBorder 4s linear infinite;
+  z-index: 0;
 }
 
 .main::after {
-    content: '';
-    position: absolute;
-    inset: 4px; 
-    background-color: var(--card-bg);
-    border-radius: 16px;
-    z-index: 0;
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  z-index: 0;
 }
 
 @keyframes rotateBorder {
-    100% { transform: rotate(1turn); }
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
-
 .main * {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* 3. New Heading Styling */
 .app-title {
-    font-size: 32px;
-    font-weight: 600;
-    text-align: center;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    margin-bottom: 25px;
-    color: #fff;
-    user-select: none;
-    text-shadow: 
-        0 0 7px #ffffffa6,
-        0 0 10px #ffffff8a,
-        0 0 21px var(--accent-1),
-        0 0 42px var(--accent-1);
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  color: #fff;
+  user-select: none;
+  text-shadow:
+    0 0 7px #ffffffa6,
+    0 0 10px #ffffff8a,
+    0 0 21px var(--accent-1),
+    0 0 42px var(--accent-1);
 }
 
 /* 4. Input Section --- */
 .input-sec {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .input-sec label {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--accent-1);
+  display: block;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent-1);
 }
 
 .input-group {
-    display: flex;
-    gap: 12px;
-    width: 100%;
+  display: flex;
+  gap: 12px;
+  width: 100%;
 }
 
 /* Input Box - Futuristic Style */
 .input-sec input {
-    flex: 1;
-    padding: 15px;
-    font-size: 16px;
-    font-weight: 500;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-color);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    outline: none;
-    transition: all 0.3s ease;
+  flex: 1;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
 .input-sec input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* Pulse on focus */
 .input-sec input:focus {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent-1);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-1);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
 }
 
 /* Add Task Button Styling --- */
 .input-sec button.add-task-btn {
-    padding: 15px 25px;
-    /* Static Gradient for Button */
-    background: linear-gradient(135deg, var(--accent-2), #ff54b0);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(236, 0, 140, 0.3);
+  padding: 15px 25px;
+  /* Static Gradient for Button */
+  background: linear-gradient(135deg, var(--accent-2), #ff54b0);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(236, 0, 140, 0.3);
 }
 
 .input-sec button.add-task-btn:hover {
-    box-shadow: 0 0 20px rgba(236, 0, 140, 0.6);
-    transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(236, 0, 140, 0.6);
+  transform: translateY(-2px);
 }
 
 .input-sec button.add-task-btn:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .input-sec small {
-    color: var(--error-color);
-    font-size: 14px;
-    font-weight: 600;
-    display: none;
-    margin-top: 10px;
-    margin-left: 5px;
-    animation: shake 0.3s ease; 
+  color: var(--error-color);
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+  margin-top: 10px;
+  margin-left: 5px;
+  animation: shake 0.3s ease;
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 .list-sec {
-    min-height: 150px;
-    max-height: 350px; 
-    overflow-y: auto;
+  min-height: 150px;
+  max-height: 350px;
+  overflow-y: auto;
 }
 
 .list-sec::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 .list-sec::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 .list-sec::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 .task-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
 }
 
 .task-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.03);
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    border-left: 4px solid var(--accent-2);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    
-    animation: slideIn 0.4s ease-out forwards;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  border-left: 4px solid var(--accent-2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  animation: slideIn 0.4s ease-out forwards;
 }
 
 .task-list li:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    transform: translateX(5px);
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
 }
 
 @keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 480px) {
-    .main {
-        padding: 20px;
-    }
-    
-    .app-title {
-        font-size: 26px;
-    }
-    
-    .input-group {
-        flex-direction: column;
-    }
-    
-    .input-sec button.add-task-btn {
-        width: 100%;
-    }
+  .main {
+    padding: 20px;
+  }
+
+  .app-title {
+    font-size: 26px;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-sec button.add-task-btn {
+    width: 100%;
+  }
 }
 
 .task-list li span:first-child {
-    flex: 1; 
-    margin-right: 15px;
-    cursor: pointer;
+  flex: 1;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.task-list li span.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .toggle-box {
-    width: 22px;
-    height: 22px;
-    border: 2px solid var(--accent-1); 
-    border-radius: 50%;
-    cursor: pointer;
-    margin-right: 15px;
-    transition: all 0.3s ease;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--accent-1);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: all 0.3s ease;
 }
 
 .toggle-box:hover {
-    background-color: rgba(0, 242, 254, 0.2);
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+  background-color: rgba(0, 242, 254, 0.2);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
 }
 
 .toggle-box.checked {
-    background-color: var(--accent-1);
-    box-shadow: 0 0 12px var(--accent-1);
+  background-color: var(--accent-1);
+  box-shadow: 0 0 12px var(--accent-1);
 }
 
 /* Delete Button Styling */
 .delete-btn {
-    color: var(--error-color); 
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: var(--error-color);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete-btn:hover {
-    color: #fff;
-    text-shadow: 0 0 15px var(--error-color);
-    transform: scale(1.2);
+  color: #fff;
+  text-shadow: 0 0 15px var(--error-color);
+  transform: scale(1.2);
 }

@@ -13,7 +13,7 @@ taskBtn.addEventListener("click", (e) => {
       completed: false,
       id: Date.now(),
     });
-    render()
+    render();
     console.log(tasks);
     document.querySelector("small").style.display = "none";
     input.value = "";
@@ -24,8 +24,8 @@ function render() {
     .map((task) => {
       return `
             <li data-id="${task.id}">
-                <span>${task.text}</span>
-                <div class="toggle-box"></div>
+                <span class="${task.completed === true? "completed":""}">${task.text}</span>
+                <div class="toggle-box ${task.completed === true? "checked":""}"></div>
                 <span class="delete-btn">✕</span>
             </li>
         `;
@@ -34,3 +34,14 @@ function render() {
 
   document.querySelector(".task-list").innerHTML = html;
 }
+taskList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("toggle-box")) {
+    let li = e.target.closest("li");
+    let id = Number(li.dataset.id);
+
+    let tsk = tasks.find((T) => T.id === id);
+    console.log(tsk);
+    tsk.completed = !tsk.completed;
+    render();
+  }
+});
