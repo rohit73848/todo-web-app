@@ -8,7 +8,7 @@ let input = document.querySelector("input");
 let taskBtn = document.querySelector(".add-task-btn");
 let taskList = document.querySelector(".task-list");
 
-taskBtn.addEventListener("click", (e) => {
+function addTask() {
   if (input.value === "" || input.value === " ") {
     document.querySelector("small").style.display = "initial";
   } else {
@@ -22,7 +22,17 @@ taskBtn.addEventListener("click", (e) => {
     document.querySelector("small").style.display = "none";
     input.value = "";
   }
+}
+
+taskBtn.addEventListener("click", (e) => {
+  addTask();
 });
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+      addTask();
+  }
+});
+
 function render() {
   let html = tasks
     .map((task) => {
@@ -56,4 +66,4 @@ taskList.addEventListener("click", (e) => {
     saveTasks();
   }
 });
-    render();
+render();
