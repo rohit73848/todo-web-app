@@ -1,11 +1,15 @@
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+// console.log(tasks)
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
 let input = document.querySelector("input");
 let taskBtn = document.querySelector(".add-task-btn");
 let taskList = document.querySelector(".task-list");
 
 taskBtn.addEventListener("click", (e) => {
-  if (input.value === "") {
+  if (input.value === "" || input.value === " ") {
     document.querySelector("small").style.display = "initial";
   } else {
     tasks.push({
@@ -13,6 +17,7 @@ taskBtn.addEventListener("click", (e) => {
       completed: false,
       id: Date.now(),
     });
+    saveTasks();
     render();
     document.querySelector("small").style.display = "none";
     input.value = "";
@@ -41,11 +46,14 @@ taskList.addEventListener("click", (e) => {
     let tsk = tasks.find((T) => T.id === id);
     tsk.completed = !tsk.completed;
     render();
+    saveTasks();
   } else if (e.target.classList.contains("delete-btn")) {
     let li = e.target.closest("li");
     let id = Number(li.dataset.id);
 
     tasks = tasks.filter((T) => T.id !== id);
     render();
+    saveTasks();
   }
 });
+    render();
