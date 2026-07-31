@@ -29,24 +29,38 @@ taskBtn.addEventListener("click", (e) => {
 });
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-      addTask();
+    addTask();
   }
 });
 
 function render() {
-  let html = tasks
-    .map((task) => {
-      return `
+  let html;
+  if (tasks.length == 0) {
+    html = `<li class="empty-state">No tasks yet — add one above!</li>`;
+  } else {
+    html = tasks
+      .map((task) => {
+        return `
             <li data-id="${task.id}">
                 <span class="${task.completed === true ? "completed" : ""}">${task.text}</span>
                 <div class="toggle-box ${task.completed === true ? "checked" : ""}"></div>
                 <span class="delete-btn">✕</span>
             </li>
         `;
-    })
-    .join("");
+      })
+      .join("");
+  }
 
   document.querySelector(".task-list").innerHTML = html;
+
+  let totalCount = tasks.length;
+  let completedCount = tasks.filter((task) => task.completed).length;
+  let remainingCount = totalCount - completedCount;
+
+  document.getElementById("total-count").textContent = totalCount;
+  document.getElementById("completed-count").textContent = completedCount;
+  document.getElementById("remaining-count").textContent = remainingCount;
+  console.log(completedCount, totalCount, remainingCount);
 }
 taskList.addEventListener("click", (e) => {
   if (e.target.classList.contains("toggle-box")) {
